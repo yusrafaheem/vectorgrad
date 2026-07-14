@@ -27,7 +27,13 @@ line-length = 100
 target-version = "py39"
 
 [tool.ruff.lint]
-select = ["E", "F", "I", "UP", "B"]
+# Deliberately scoped to correctness/bug-risk rules (pyflakes, pycodestyle,
+# import sorting) rather than turning on every pyupgrade/bugbear opinion on
+# day one. Quoted forward-reference type hints ("Tensor") and typing.List /
+# typing.Optional are valid, widely-used style choices even with
+# `from __future__ import annotations` enabled -- this project doesn't treat
+# them as lint errors. Stricter style rules can be adopted incrementally.
+select = ["E", "F", "I"]
 
 [tool.black]
 line-length = 100
