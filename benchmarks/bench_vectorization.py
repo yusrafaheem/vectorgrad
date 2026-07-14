@@ -64,7 +64,11 @@ def main():
     W = np.random.randn(in_features, out_features)
     b = np.random.randn(out_features)
 
-    print(f"{'batch size':>10} | {'naive loops (s)':>16} | {'vectorized (s)':>15} | {'speedup':>10}")
+    header = (
+        f"{'batch size':>10} | {'naive loops (s)':>16} | "
+        f"{'vectorized (s)':>15} | {'speedup':>10}"
+    )
+    print(header)
     print("-" * 62)
 
     # Naive loops become painfully slow fast -- cap how large we test them.
