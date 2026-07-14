@@ -109,5 +109,5 @@ class Sequential(Module):
         return params
 
     def __repr__(self):
-        body = "\n  ".join(repr(l) for l in self.layers)
+        body = "\n  ".join(repr(layer) for layer in self.layers)
         return f"Sequential(\n  {body}\n)"
