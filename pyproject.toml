@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vectorgrad"
+version = "0.1.0"
+description = "A reverse-mode autodiff engine and neural network library built from scratch on vectorized NumPy, with benchmarks against PyTorch."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Yusra Faheem" }]
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+examples = ["matplotlib>=3.7"]
+benchmark = ["torch>=2.0"]
+dev = ["ruff>=0.4", "black>=24.0", "mypy>=1.9"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# Deliberately scoped to correctness/bug-risk rules (pyflakes, pycodestyle,
+# import sorting) rather than turning on every pyupgrade/bugbear opinion on
+# day one. Quoted forward-reference type hints ("Tensor") and typing.List /
+# typing.Optional are valid, widely-used style choices even with
+# `from __future__ import annotations` enabled -- this project doesn't treat
+# them as lint errors. Stricter style rules can be adopted incrementally.
+select = ["E", "F", "I"]
+
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true

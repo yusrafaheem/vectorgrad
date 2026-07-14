@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package
+        run: pip install -e ".[dev,examples]"
+
+      - name: Lint with ruff
+        run: ruff check src tests benchmarks examples
+
+      - name: Check formatting with black
+        run: black --check src tests benchmarks examples
+
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Run vectorization benchmark (smoke test)
+        run: python benchmarks/bench_vectorization.py
+
+      - name: Run training example (smoke test)
+        run: python examples/train_classifier.py
