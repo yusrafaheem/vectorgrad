@@ -1,5 +1,5 @@
 from .nn import Linear, Module, ReLU, Sequential, Sigmoid, Tanh
-from .optim import Adam, Optimizer, SGD
+from .optim import SGD, Adam, Optimizer
 from .tensor import Tensor
 
 __all__ = [
