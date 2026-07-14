@@ -85,13 +85,13 @@ class Tanh(Module):
 class Sequential(Module):
     """Chains a list of modules, e.g.
 
-        model = Sequential([
-            Linear(784, 128),
-            ReLU(),
-            Linear(128, 32),
-            ReLU(),
-            Linear(32, 10),
-        ])
+    model = Sequential([
+        Linear(784, 128),
+        ReLU(),
+        Linear(128, 32),
+        ReLU(),
+        Linear(32, 10),
+    ])
     """
 
     def __init__(self, layers: List[Module]):
