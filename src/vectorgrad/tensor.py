@@ -161,11 +161,11 @@ class Tensor:
 
     def __truediv__(self, other):
         other = other if isinstance(other, Tensor) else Tensor(other)
-        return self * (other ** -1.0)
+        return self * (other**-1.0)
 
     def __pow__(self, power: float):
         assert isinstance(power, (int, float)), "only scalar powers supported"
-        out = Tensor(self.data ** power, self.requires_grad, (self,), f"pow{power}")
+        out = Tensor(self.data**power, self.requires_grad, (self,), f"pow{power}")
 
         def _backward():
             if self.requires_grad:
@@ -256,7 +256,7 @@ class Tensor:
 
         def _backward():
             if self.requires_grad:
-                g = (1 - t ** 2) * out.grad
+                g = (1 - t**2) * out.grad
                 self.grad = g if self.grad is None else self.grad + g
 
         out._backward = _backward
