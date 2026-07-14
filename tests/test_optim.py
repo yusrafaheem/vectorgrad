@@ -69,7 +69,9 @@ class TestSGD(unittest.TestCase):
                     return i
             return len(errors)  # never converged within budget
 
-        self.assertLess(first_below(momentum_errors, threshold), first_below(plain_errors, threshold))
+        momentum_steps = first_below(momentum_errors, threshold)
+        plain_steps = first_below(plain_errors, threshold)
+        self.assertLess(momentum_steps, plain_steps)
 
 
 class TestAdam(unittest.TestCase):
