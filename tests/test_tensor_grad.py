@@ -69,7 +69,7 @@ class TestElementaryOps(unittest.TestCase, GradCheckMixin):
         self.assert_grad_matches(lambda t: (t * t).sum(), np.random.randn(5))
 
     def test_pow(self):
-        self.assert_grad_matches(lambda t: (t ** 3).sum(), np.random.randn(5) + 2.0)
+        self.assert_grad_matches(lambda t: (t**3).sum(), np.random.randn(5) + 2.0)
 
     def test_relu(self):
         self.assert_grad_matches(lambda t: t.relu().sum(), np.random.randn(20))
