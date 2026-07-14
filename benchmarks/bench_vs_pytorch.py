@@ -109,7 +109,10 @@ def bench_torch(batch_size: int) -> float:
 
 
 def main():
-    print(f"architecture: {ARCHITECTURE}, {N_ITERS} iters/batch size (train step: fwd+bwd+optim.step)")
+    print(
+        f"architecture: {ARCHITECTURE}, {N_ITERS} iters/batch size "
+        "(train step: fwd+bwd+optim.step)"
+    )
     print()
     header = f"{'batch size':>10} | {'vectorgrad (ms)':>16}"
     if HAS_TORCH:
