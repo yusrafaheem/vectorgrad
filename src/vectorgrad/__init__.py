@@ -1,6 +1,6 @@
+from .nn import Linear, Module, ReLU, Sequential, Sigmoid, Tanh
+from .optim import Adam, Optimizer, SGD
 from .tensor import Tensor
-from .nn import Module, Linear, ReLU, Sigmoid, Tanh, Sequential
-from .optim import Optimizer, SGD, Adam
 
 __all__ = [
     "Tensor",
